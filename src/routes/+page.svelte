@@ -50,7 +50,7 @@
 		});
 
 		window.addEventListener('gamepaddisconnected', (e: GamepadEvent) => {
-			gamepadName = 'No controller';
+			gamepadName = '';
 			$left.gamepadIndex = $right.gamepadIndex = -1;
 		});
 	});
@@ -74,7 +74,13 @@
 <div class="p-[30px]">
 	<div class="top">
 		<h1>Stick Calibration</h1>
-		<div>Controller: {gamepadName}</div>
+		{#if gamepadName.length}
+			<div>Controller: {gamepadName}</div>
+		{:else}
+			<div class="text-red-500">
+				Press a button or move a stick on your controller to detect it.
+			</div>
+		{/if}
 	</div>
 
 	<div class="container">
@@ -86,6 +92,18 @@
 			<Stick stickData={right}></Stick>
 		</div>
 	</div>
+
+	<p class="mt-2">
+		Click the config string below to copy it to your clipboard. Paste it into a Dolphin controller
+		profile. You can use the default one, usually found in:
+	</p>
+	<p class="code">
+		/storage/emulated/0/Android/data/org.dolphinemu.dolphinemu/files/Config/GCPadNew.ini
+	</p>
+	<p>or in any profile inside:</p>
+	<p class="code">
+		/storage/emulated/0/Android/data/org.dolphinemu.dolphinemu/files/Config/Profiles/GCPad/
+	</p>
 	<div
 		class="mt-[10px] cursor-pointer bg-gray-300 p-[5px] font-mono whitespace-pre"
 		on:click={() => copyToClipboard(buildConfigString([$left, $right]))}
@@ -94,7 +112,9 @@
 	</div>
 </div>
 
-<style>
+<style lang="postcss">
+	@reference "tailwindcss";
+
 	h1 {
 		margin-bottom: 0.5rem;
 	}
@@ -107,5 +127,8 @@
 	}
 	.stick-panel {
 		width: 240px;
+	}
+	.code {
+		@apply bg-gray-100 p-2 font-mono text-sm;
 	}
 </style>

@@ -11,7 +11,7 @@
 	let canvas: HTMLCanvasElement;
 
 	// Redraw whenever any prop/store changes
-	$: !DEBUG && draw($stickData);
+	$: !DEBUG && canvas && draw($stickData);
 
 	function draw(data: any) {
 		if (!canvas) return;
@@ -62,7 +62,7 @@
 		ctx.closePath();
 		ctx.fill();
 
-		// 3) Gate-size octagon (corners at 0°,45°,…)
+		// 3) Gate-size octagon
 		ctx.strokeStyle = '#f55';
 		ctx.lineWidth = 2;
 		const gateR = data.gateSize * maxR;
@@ -108,4 +108,6 @@
 	height="200"
 ></canvas>
 
-<button on:click={() => draw($stickData)}> Redraw </button>
+{#if DEBUG}
+	<button on:click={() => draw($stickData)}> Redraw </button>
+{/if}

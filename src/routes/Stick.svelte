@@ -87,7 +87,7 @@
 
 <label>
 	Dead Zone: {($stickData.deadZone * 100).toFixed(0)}%
-	<input type="range" min="0" max="1" step="0.01" bind:value={$stickData.deadZone} />
+	<input type="range" min="0" max="0.5" step="0.01" bind:value={$stickData.deadZone} />
 </label>
 
 <label>
