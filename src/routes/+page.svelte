@@ -107,11 +107,12 @@
 
 	<div class="mt-8">Config (click to copy):</div>
 	<div
-		class=" cursor-pointer bg-gray-300 p-[5px] font-mono whitespace-pre"
+		class="mb-8 cursor-pointer bg-gray-300 p-[5px] font-mono whitespace-pre"
 		on:click={() => copyToClipboard(buildConfigString([$left, $right]))}
 	>
 		{buildConfigString([$left, $right])}
 	</div>
+	<a href="https://github.com/AurelioB/dolphin-calibration">Source code</a>
 </div>
 
 <style lang="postcss">
