@@ -94,18 +94,20 @@
 	</div>
 
 	<p class="mt-2">
-		Click the config string below to copy it to your clipboard. Paste it into a Dolphin controller
-		profile. You can use the default one, usually found in:
+		Add the config below to your Dolphin controller profile. You can use the default one, usually
+		found in:
 	</p>
 	<p class="code">
 		/storage/emulated/0/Android/data/org.dolphinemu.dolphinemu/files/Config/GCPadNew.ini
 	</p>
-	<p>or in any profile inside:</p>
+	<p>or any custom profile inside:</p>
 	<p class="code">
 		/storage/emulated/0/Android/data/org.dolphinemu.dolphinemu/files/Config/Profiles/GCPad/
 	</p>
+
+	<div class="mt-8">Config (click to copy):</div>
 	<div
-		class="mt-[10px] cursor-pointer bg-gray-300 p-[5px] font-mono whitespace-pre"
+		class=" cursor-pointer bg-gray-300 p-[5px] font-mono whitespace-pre"
 		on:click={() => copyToClipboard(buildConfigString([$left, $right]))}
 	>
 		{buildConfigString([$left, $right])}

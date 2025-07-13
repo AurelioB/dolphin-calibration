@@ -69,7 +69,10 @@
 
 <div>
 	<button
-		class:bg-red-500={$stickData.calibrating}
+		disabled={$stickData.gamepadIndex < 0}
+		class="rounded bg-gray-300 px-1"
+		class:bg-green-300={$stickData.gamepadIndex > -1 && !$stickData.calibrating}
+		class:bg-red-500={$stickData.gamepadIndex > -1 && $stickData.calibrating}
 		on:click={() => {
 			$stickData.calibrating = !$stickData.calibrating;
 			if ($stickData.calibrating) {
@@ -78,9 +81,9 @@
 		}}
 	>
 		{#if $stickData.calibrating}
-			⏹ Stop Calibration
+			Stop Calibration
 		{:else}
-			⏺ Start Calibration
+			Start Calibration
 		{/if}
 	</button>
 </div>
